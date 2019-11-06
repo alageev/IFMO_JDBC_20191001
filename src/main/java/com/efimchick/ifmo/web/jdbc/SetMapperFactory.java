@@ -55,6 +55,8 @@ public class SetMapperFactory {
                 Position.valueOf(resultSet.getString("POSITION")),
                 LocalDate.parse(resultSet.getString("HIREDATE")),
                 new BigDecimal(resultSet.getInt("SALARY")),
-                manager(resultSet, Integer.parseInt(resultSet.getString("MANAGER"))));
+                resultSet.getString("MANAGER") == null ? null :
+                manager(resultSet, Integer.parseInt(resultSet.getString("MANAGER")))
+         );
     }
 }
