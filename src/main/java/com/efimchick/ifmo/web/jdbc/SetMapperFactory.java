@@ -30,8 +30,7 @@ public class SetMapperFactory {
             }
         };
     }
-    public Employee manager(ResultSet resultSet, int managerID) {
-        try {
+    public Employee manager(ResultSet resultSet, int managerID) throws SQLException {
             int rowID = resultSet.getRow();
             resultSet.beforeFirst();
             Employee emp = null;
@@ -43,13 +42,9 @@ public class SetMapperFactory {
             }
             resultSet.absolute(rowID);
             return emp;
-        } catch (SQLException exception) {
-            return null;
-        }
     }
 
-    private Employee employee(ResultSet resultSet){
-        try {
+    private Employee employee(ResultSet resultSet) throws SQLException {
          return new Employee(
                 new BigInteger(String.valueOf(resultSet.getInt("ID"))),
                 new FullName(
@@ -61,8 +56,5 @@ public class SetMapperFactory {
                 LocalDate.parse(resultSet.getString("HIREDATE")),
                 new BigDecimal(resultSet.getInt("SALARY")),
                 manager(resultSet, Integer.parseInt(resultSet.getString("MANAGER"))));
-        } catch (SQLException exception) {
-            return null;
-        }
     }
 }
