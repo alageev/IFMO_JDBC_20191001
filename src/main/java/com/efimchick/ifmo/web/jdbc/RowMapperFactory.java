@@ -17,8 +17,8 @@ public class RowMapperFactory {
                         new BigInteger(String.valueOf(resultSet.getInt("ID"))),
                         new FullName(
                                 resultSet.getString("FIRSTNAME"),
-                                resultSet.getString("MIDDLENAME"),
-                                resultSet.getString("LASTNAME")
+                                resultSet.getString("LASTNAME"),
+                                resultSet.getString("MIDDLENAME")
                         ),
                         Position.valueOf(resultSet.getString("POSITION")),
                         LocalDate.parse(resultSet.getString("HIREDATE")),
